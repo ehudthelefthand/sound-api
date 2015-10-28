@@ -21,3 +21,26 @@ var XHRGetBuffer = function(url, callback) {
   };
   request.send();
 };
+
+
+var WebAudioAPIException = function() {
+  this.message = "Web Audio API is not supported in this browser";
+  this.name = "WebAudioAPIException";
+  this.toString = function() {
+    return this.message;
+  };
+};
+
+WebAudioAPIException.prototype = Error.prototype;
+
+var getAudioContext = function() {
+  var context = null;
+  try {
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    context = new AudioContext();
+    return context;
+  }
+  catch (e) {
+    throw new WebAudioAPIException();
+  }
+}

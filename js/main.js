@@ -1,26 +1,3 @@
-var getAudioContext = function() {
-  var context = null;
-  try {
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    context = new AudioContext();
-    return context;
-  }
-  catch (e) {
-    throw new WebAudioAPIException();
-  }
-}
-
-var WebAudioAPIException = function() {
-  this.message = "Web Audio API is not supported in this browser";
-  this.name = "WebAudioAPIException";
-  this.toString = function() {
-    return this.message;
-  };
-};
-
-WebAudioAPIException.prototype = Error.prototype;
-
-
 var initialize = function(context, callback) {
   try {
     var xhr = XHRGetBuffer;
