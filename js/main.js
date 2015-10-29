@@ -2,7 +2,8 @@ var initialize = function(context, callback) {
   try {
     var xhr = XHRGetBuffer;
     var bufferLoader = new BufferLoader(context, xhr);
-    bufferLoader.load('sound/how-great-thou-art.mp3', function(url) {
+    bufferLoader.load('sound/amazing-grace.mp3', function(url) {
+    // bufferLoader.load('sound/how-great-thou-art.mp3', function(url) {
       var buffer = bufferLoader.caches[url];
       var sound = new Sound(context, buffer);
       callback(sound);
